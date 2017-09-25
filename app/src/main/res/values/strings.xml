@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">PSI Updates</string>
-    <string name="title_activity_psiupdates">PSI Index of Singapore</string>
-    <string name="hello_word">Hello Word</string>
+    <string name="title_activity_psiupdates">PSI Updates of Singapore</string>
 
     <string name="label_retrieving_data">Retrieving data&#8230;</string>
     <string name="label_last_updated">Last Updated : %s</string>
