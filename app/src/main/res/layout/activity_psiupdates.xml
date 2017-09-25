@@ -47,9 +47,10 @@
                 android:id="@+id/psi_info_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/label_psi24hours"
                 android:textColor="@color/darkOrange"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold|italic"
                 android:typeface="sans" />
         </LinearLayout>
