@@ -41,4 +41,8 @@ public class Constant {
 
     public static final float ZOOM_VALUE = 10.5f;
 
+    public static final String DRAWABLE = "drawable";
+    public static final String SPACE = " ";
+    public static final String UNDERSCORE = "_";
+    public static final String COLON = ":";
 }
