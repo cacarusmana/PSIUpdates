@@ -9,6 +9,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.global.imd.psiupdates.R;
 import com.global.imd.psiupdates.network.AsyncTaskCompleteListener;
@@ -32,6 +35,10 @@ public class HomeActivity extends AppCompatActivity implements AsyncTaskComplete
     @BindView(R.id.view_pager)
     ViewPager viewPager;
 
+    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<String> mFragmentTitleList = new ArrayList<>();
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,11 +58,38 @@ public class HomeActivity extends AppCompatActivity implements AsyncTaskComplete
 
     private void setupViewPager() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PSI24Fragment(), getString(R.string.label_psi24_title));
-        adapter.addFragment(new ParticulateMatterFragment(), getString(R.string.label_pm25_title));
+        adapter.addFragment(new PSI24MapFragment(), getString(R.string.label_psi24_title));
+        adapter.addFragment(new PM25MapFragment(), getString(R.string.label_pm25_title));
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.refresh_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            case R.id.action_refresh:
+                int selectedTabPosition = tabLayout.getSelectedTabPosition();
+                if (selectedTabPosition == 0) {
+                    ((PSI24MapFragment) mFragmentList.get(selectedTabPosition)).reloadData(true);
+                } else {
+                    ((PM25MapFragment) mFragmentList.get(selectedTabPosition)).reloadData(true);
+                }
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -65,8 +99,7 @@ public class HomeActivity extends AppCompatActivity implements AsyncTaskComplete
 
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+
 
         private ViewPagerAdapter(FragmentManager manager) {
             super(manager);
