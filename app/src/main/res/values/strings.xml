@@ -8,9 +8,50 @@
     <string name="message_problem_communication">Problem communication to the server</string>
     <string name="label_refresh">Refresh</string>
     <string name="label_psi24hours" formatted="false">24-hr PSI : %s - %s</string>
+    <string name="label_pm25hourly" formatted="false">1-hr PM2.5 : %s - %s</string>
 
     <string name="label_psi_readings">PSI Readings</string>
     <string name="label_pm25_readings">PM2.5 Readings</string>
     <string name="label_psi24_title">24-hr PSI</string>
     <string name="label_pm25_title">1-hr PM2.5</string>
+    <string name="label_psi24_level">PSI Safety Levels :</string>
+    <string name="label_pm25_level">PM2.5 Safety Levels :</string>
+
+
+    <array name="psi_safety_level_title_array">
+        <item>0 - 50 : Good</item>
+        <item>51 - 100 : Moderate</item>
+        <item>101 - 200 : Unhealthy</item>
+        <item>201 - 300 : Very Unhealthy</item>
+        <item>Above 300 : Hazardous</item>
+    </array>
+
+    <array name="pm25_safety_level_title_array">
+        <item>0 - 12 : Good</item>
+        <item>13 - 55 : Moderate</item>
+        <item>56 - 150 : Unhealthy</item>
+        <item>151 - 250: Very Unhealthy</item>
+        <item>251 - 500 : Hazardous</item>
+    </array>
+
+    <array name="safety_level_desc_array">
+        <item>Normal activities for everyone</item>
+        <item>Normal activities for everyone</item>
+        <item>Healthy Persons : Reduce prolonged or strenuous outdoor physical exertion\n\nElderly,
+            Pregnant Women &amp; Children: Minimise prolonged or strenuous outdoor physical
+            exertion\n\nPersons with Chronic Lung Disease or Heart Disease: Avoid prolonged or
+            strenuous outdoor physical exertion
+        </item>
+        <item>Healthy Persons : Avoid prolonged or strenuous outdoor physical exertion\n\nElderly,
+            Pregnant Women &amp; Children: Minimise outdoor activities\n\nPersons with Chronic Lung
+            Disease or Heart Disease: Avoid outdoor activities
+        </item>
+        <item>Healthy Persons : Minimise outdoor activities\n\nElderly, Pregnant Women &amp;
+            Children:
+            Avoid outdoor activities\n\nPersons with Chronic Lung Disease or Heart Disease: Avoid
+            outdoor activities
+        </item>
+    </array>
+
+
 </resources>
