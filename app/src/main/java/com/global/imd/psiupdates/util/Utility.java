@@ -72,4 +72,21 @@ public class Utility {
 
         return bitmap;
     }
+
+    public int getPSILevelColor(Context context, int value) {
+        int color = R.color.good;
+        if (value >= 0 && value <= 50) {
+            color = R.color.good;
+        } else if (value > 50 && value <= 100) {
+            color = R.color.moderate;
+        } else if (value > 100 && value <= 200) {
+            color = R.color.un_healthy;
+        } else if (value > 200 && value <= 300) {
+            color = R.color.very_un_healthy;
+        } else if (value > 300) {
+            color = R.color.hazardous;
+        }
+
+        return color;
+    }
 }
