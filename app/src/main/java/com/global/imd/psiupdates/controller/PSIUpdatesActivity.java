@@ -97,7 +97,7 @@ public class PSIUpdatesActivity extends AppCompatActivity implements OnMapReadyC
 
     private void reloadData() {
         String param = Constant.DATE_TIME_FIELD + DateUtil.formatDate(Constant.DATE_FORMAT, new Date());
-        CallWebService task = new CallWebService(this, this);
+        CallWebService task = new CallWebService(this, this, true);
         task.execute(param);
     }
 
