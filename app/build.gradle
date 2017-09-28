@@ -27,6 +27,7 @@ dependencies {
 
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:percent:25.3.1'
     compile 'com.google.android.gms:play-services-maps:11.0.4'
 
     // unit test libs
@@ -36,4 +37,7 @@ dependencies {
     // butter knife libs
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //aakira expandable layout lib
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
 }
