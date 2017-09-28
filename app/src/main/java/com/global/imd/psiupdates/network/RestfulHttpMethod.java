@@ -28,6 +28,7 @@ public class RestfulHttpMethod {
         } else {
             result = readStream(con.getErrorStream());
         }
+        System.out.println("##### RESULT : " + result);
 
         return result;
     }
