@@ -8,4 +8,9 @@
     <string name="message_problem_communication">Problem communication to the server</string>
     <string name="label_refresh">Refresh</string>
     <string name="label_psi24hours" formatted="false">24-hr PSI : %s - %s</string>
+
+    <string name="label_psi_readings">PSI Readings</string>
+    <string name="label_pm25_readings">PM2.5 Readings</string>
+    <string name="label_psi24_title">24-hr PSI</string>
+    <string name="label_pm25_title">1-hr PM2.5</string>
 </resources>
