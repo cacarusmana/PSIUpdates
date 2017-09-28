@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.global.imd.psiupdates.R;
-import com.global.imd.psiupdates.util.Constant;
 
 /**
  * Created by Caca Rusmana on 18/09/2017.
@@ -30,11 +29,10 @@ public class CallWebService extends AsyncTask<Object, String, String> {
 
     @Override
     protected String doInBackground(Object... params) {
-        String param = (String) params[0];
+        String url = (String) params[0];
         String result = null;
         try {
 
-            String url = Constant.API_URL + param;
             result = RestfulHttpMethod.connect(url);
 
         } catch (Exception e) {
