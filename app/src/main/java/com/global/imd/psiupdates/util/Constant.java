@@ -7,7 +7,9 @@ package com.global.imd.psiupdates.util;
 public class Constant {
 
 
-    public static final String API_URL = "https://api.data.gov.sg/v1/environment/psi?";
+    public static final String BASE_API_URL = "https://api.data.gov.sg/v1/environment/";
+    public static final String PSI_URL = BASE_API_URL + "psi?";
+    public static final String PM25_URL = BASE_API_URL + "pm25?";
     public static final String API_KEY = "uMebr8EaejmtS5W8TR5X5NgBW19A0o9P";
     public static final String API_KEY_NAME = "api-key";
 
@@ -32,6 +34,7 @@ public class Constant {
     public static final String PSI24_HOURLY_FIELD = "psi_twenty_four_hourly";
     public static final String TIMESTAMP_FIELD = "timestamp";
     public static final String ERROR_MESSAGE_FIELD = "message";
+    public static final String PM25_ONE_HOURLY_FIELD = "pm25_one_hourly";
 
     public static final String FOCUSED_CAMERA_POSITION = "central";
     public static final String DATE_TIME_FIELD = "date_time=";
