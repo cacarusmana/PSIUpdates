@@ -15,10 +15,8 @@ import com.global.imd.psiupdates.network.CallWebService;
 import com.global.imd.psiupdates.util.Constant;
 import com.global.imd.psiupdates.util.DateUtil;
 import com.global.imd.psiupdates.util.Utility;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -36,17 +34,13 @@ import butterknife.ButterKnife;
  * Created by Caca Rusmana on 27/09/2017.
  */
 
-public class ParticulateMatterFragment extends BaseFragment implements AsyncTaskCompleteListener<Object> {
+public class PM25MapFragment extends BaseMapFragment implements AsyncTaskCompleteListener<Object> {
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.particulate_matter_fragment, container, false);
+        return inflater.inflate(R.layout.pm25_fragment, container, false);
     }
 
     @Override
@@ -54,28 +48,26 @@ public class ParticulateMatterFragment extends BaseFragment implements AsyncTask
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        initComponent(view);
+        initComponent();
     }
 
     @Override
-    protected void initComponent(View view) {
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.map);
+    protected void initComponent() {
+        super.initComponent();
 
-        mapFragment.getMapAsync(this);
+        initSummaryLevel(getResources().getStringArray(R.array.pm25_safety_level_title_array), getResources().getStringArray(R.array.safety_level_desc_array));
     }
 
-    private void reloadData() {
+    public void reloadData(boolean showDialog) {
         String url = Constant.PM25_URL + Constant.DATE_TIME_FIELD + DateUtil.formatDate(Constant.DATE_FORMAT, new Date());
-        CallWebService task = new CallWebService(context, this);
+        CallWebService task = new CallWebService(context, this, showDialog);
         task.execute(url);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        reloadData();
+        super.onMapReady(googleMap);
+        reloadData(false);
     }
 
     @Override
@@ -110,8 +102,8 @@ public class ParticulateMatterFragment extends BaseFragment implements AsyncTask
 
                     View markerView = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.custom_marker_layout, null);
 
-                    setMarkerValue(markerView, R.id.psi_value, String.valueOf(psiInfo.getValue()));
-                    setMarkerValue(markerView, R.id.name_value, psiInfo.getName().substring(0, 1).toUpperCase() + psiInfo.getName().substring(1));
+                    setValue(markerView, R.id.psi_value, String.valueOf(psiInfo.getValue()));
+                    setValue(markerView, R.id.name_value, psiInfo.getName().substring(0, 1).toUpperCase() + psiInfo.getName().substring(1));
 
                     mMap.addMarker(new MarkerOptions()
                             .position(latLng)
@@ -130,12 +122,11 @@ public class ParticulateMatterFragment extends BaseFragment implements AsyncTask
                     }
                 }
 
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mapFocusPosition, Constant.ZOOM_VALUE);
-                mMap.animateCamera(cameraUpdate);
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mapFocusPosition, Constant.ZOOM_VALUE));
 
                 Date lastUpdateDate = DateUtil.parseDate(Constant.DATE_FORMAT_RESPONSE, itemsArray.getJSONObject(0).getString(Constant.TIMESTAMP_FIELD));
                 lastUpdatedText.setText(String.format(getString(R.string.label_last_updated), DateUtil.formatDate(Constant.DATE_FORMAT_UPDATE, lastUpdateDate)));
-                psiInfoText.setText(String.format(getString(R.string.label_psi24hours), String.valueOf(minValue), String.valueOf(maxValue)));
+                psiInfoText.setText(String.format(getString(R.string.label_pm25hourly), String.valueOf(minValue), String.valueOf(maxValue)));
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(context, getString(R.string.message_unable_to_show_psi), Toast.LENGTH_LONG).show();
