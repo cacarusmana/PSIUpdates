@@ -89,4 +89,8 @@ public class Utility {
 
         return color;
     }
+
+    public static String getImageFileName(String status) {
+        return status.substring(status.indexOf(Constant.COLON) + 1).trim().replace(Constant.SPACE, Constant.UNDERSCORE).toLowerCase();
+    }
 }
