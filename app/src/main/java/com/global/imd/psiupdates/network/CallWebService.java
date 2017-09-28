@@ -15,16 +15,19 @@ public class CallWebService extends AsyncTask<Object, String, String> {
     private Context context;
     private ProgressDialog dialog;
     private AsyncTaskCompleteListener<Object> callback;
+    private boolean showDialog;
 
-    public CallWebService(Context context, AsyncTaskCompleteListener<Object> callback) {
+    public CallWebService(Context context, AsyncTaskCompleteListener<Object> callback, boolean showDialog) {
         this.context = context;
         this.callback = callback;
+        this.showDialog = showDialog;
     }
 
     @Override
     protected void onPreExecute() {
         dialog = ProgressDialog.show(context, null, context.getString(R.string.label_retrieving_data), true, false);
-        dialog.show();
+        if (showDialog)
+            dialog.show();
     }
 
     @Override
