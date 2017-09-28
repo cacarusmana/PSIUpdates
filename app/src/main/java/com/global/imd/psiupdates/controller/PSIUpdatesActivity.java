@@ -19,6 +19,7 @@ import com.global.imd.psiupdates.network.CallWebService;
 import com.global.imd.psiupdates.util.Constant;
 import com.global.imd.psiupdates.util.DateUtil;
 import com.global.imd.psiupdates.util.Utility;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -160,7 +161,9 @@ public class PSIUpdatesActivity extends AppCompatActivity implements OnMapReadyC
                     }
                 }
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mapFocusPosition, Constant.ZOOM_VALUE));
+//                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mapFocusPosition, Constant.ZOOM_VALUE));
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mapFocusPosition, Constant.ZOOM_VALUE);
+                mMap.animateCamera(cameraUpdate);
 
                 Date lastUpdateDate = DateUtil.parseDate(Constant.DATE_FORMAT_RESPONSE, itemsArray.getJSONObject(0).getString(Constant.TIMESTAMP_FIELD));
                 lastUpdatedText.setText(String.format(getString(R.string.label_last_updated), DateUtil.formatDate(Constant.DATE_FORMAT_UPDATE, lastUpdateDate)));
