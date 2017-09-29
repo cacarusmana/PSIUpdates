@@ -14,7 +14,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.global.imd.psiupdates.R;
-import com.global.imd.psiupdates.network.AsyncTaskCompleteListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ import butterknife.ButterKnife;
  * Created by Caca Rusmana on 27/09/2017.
  */
 
-public class HomeActivity extends AppCompatActivity implements AsyncTaskCompleteListener<Object> {
+public class HomeActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -35,14 +34,13 @@ public class HomeActivity extends AppCompatActivity implements AsyncTaskComplete
     @BindView(R.id.view_pager)
     ViewPager viewPager;
 
-    private final List<Fragment> mFragmentList = new ArrayList<>();
-    private final List<String> mFragmentTitleList = new ArrayList<>();
-
+    private List<Fragment> mFragmentList = new ArrayList<>();
+    private List<String> mFragmentTitleList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page);
+        setContentView(R.layout.home_activity);
 
         initComponent();
     }
@@ -90,11 +88,6 @@ public class HomeActivity extends AppCompatActivity implements AsyncTaskComplete
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void onTaskComplete(Object... params) {
-        setupViewPager();
     }
 
 
