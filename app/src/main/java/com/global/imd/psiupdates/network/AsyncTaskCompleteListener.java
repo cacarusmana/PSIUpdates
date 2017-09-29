@@ -6,5 +6,6 @@ package com.global.imd.psiupdates.network;
  */
 
 public interface AsyncTaskCompleteListener<T> {
+    // callback method for rest services
     void onTaskComplete(T... params);
 }

@@ -14,6 +14,10 @@ import java.net.URL;
 
 public class RestfulHttpMethod {
 
+    /*
+    method that will communicate to rest api services
+    just a simple communication using GET request
+     */
     public static String connect(String url) throws Exception {
         String result;
 
@@ -33,6 +37,9 @@ public class RestfulHttpMethod {
         return result;
     }
 
+    /*
+    read stream response from the server then mapping and return as string plain text
+     */
     private static String readStream(InputStream inputStream) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String inputLine;
