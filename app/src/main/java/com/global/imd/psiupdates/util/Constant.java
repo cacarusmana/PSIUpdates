@@ -7,16 +7,18 @@ package com.global.imd.psiupdates.util;
 public class Constant {
 
 
+    // rest api
     public static final String BASE_API_URL = "https://api.data.gov.sg/v1/environment/";
     public static final String PSI_URL = BASE_API_URL + "psi?";
     public static final String PM25_URL = BASE_API_URL + "pm25?";
     public static final String API_KEY = "uMebr8EaejmtS5W8TR5X5NgBW19A0o9P";
     public static final String API_KEY_NAME = "api-key";
-
     public static final String METHOD_GET = "GET";
     public static final Integer TIMEOUT_CONN = 60000;
     public static final Integer RESPONSE_SUCCEED = 200;
+    public static final String REST_RESULT = "result";
 
+    // date time and localization
     public static final String SG_ZONE_ID = "Singapore";
     public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
     public static final String DATE_FORMAT_RESPONSE = "yyyy-MM-dd'T'HH:mm:ssXXX";
@@ -36,13 +38,18 @@ public class Constant {
     public static final String ERROR_MESSAGE_FIELD = "message";
     public static final String PM25_ONE_HOURLY_FIELD = "pm25_one_hourly";
 
-    public static final String FOCUSED_CAMERA_POSITION = "central";
+
     public static final String DATE_TIME_FIELD = "date_time=";
 
+    // google map
+    public static final String FOCUSED_CAMERA_POSITION = "central";
     public static final float ZOOM_VALUE = 10.5f;
 
+    // drawable and file name
     public static final String DRAWABLE = "drawable";
     public static final String SPACE = " ";
     public static final String UNDERSCORE = "_";
     public static final String COLON = ":";
+
+    public static long ANIMATION_DURATION = 400;
 }
