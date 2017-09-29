@@ -68,8 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/label_psi24_level"
-                android:textColor="@android:color/white"
+                android:text="@string/label_pm25_level"
+                android:textColor="@color/gray"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
