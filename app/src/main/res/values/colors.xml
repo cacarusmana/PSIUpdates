@@ -7,12 +7,6 @@
     <color name="darkOrange">#ce8223</color>
     <color name="whiteTransparent">#70ffffff</color>
 
-    <!-- psi color level -->
-    <color name="good">#9acd32</color>
-    <color name="moderate">#87ceeb</color>
-    <color name="un_healthy">#cbcb0b</color>
-    <color name="very_un_healthy">#ff7e00</color>
-    <color name="hazardous">#d60000</color>
-
+    <color name="gray">#D0CDCD</color>
     <color name="dark_background">#404040</color>
 </resources>
