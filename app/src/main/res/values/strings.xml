@@ -5,6 +5,7 @@
     <string name="label_retrieving_data">Retrieving data&#8230;</string>
     <string name="label_last_updated">Last Updated : %s</string>
     <string name="message_unable_to_show_psi">Ops, Unable to show PSI Information !!!</string>
+    <string name="message_unable_to_show_pm25">Ops, Unable to show PM2.5 Information !!!</string>
     <string name="message_problem_communication">Problem communication to the server</string>
     <string name="label_refresh">Refresh</string>
     <string name="label_psi24hours" formatted="false">24-hr PSI : %s - %s</string>
