@@ -23,7 +23,7 @@ public class MyUnitTest {
     public void requestDataIsValid() throws Exception {
         String param = Constant.DATE_TIME_FIELD + DateUtil.formatDate(Constant.DATE_FORMAT, new Date());
 
-        String result = RestfulHttpMethod.connect(Constant.API_URL + param);
+        String result = RestfulHttpMethod.connect(Constant.PSI_URL + param);
 
         assertTrue(Utility.checkValidResult(result));
     }
@@ -32,7 +32,7 @@ public class MyUnitTest {
     public void requestDataIsInValid() throws Exception {
         String param = Constant.DATE_TIME_FIELD + null;
 
-        String result = RestfulHttpMethod.connect(Constant.API_URL + param);
+        String result = RestfulHttpMethod.connect(Constant.PSI_URL + param);
 
         assertFalse(Utility.checkValidResult(result));
     }
