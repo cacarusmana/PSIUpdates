@@ -7,6 +7,9 @@ import android.graphics.Canvas;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Toast;
 
 import com.global.imd.psiupdates.R;
@@ -20,6 +23,10 @@ import org.json.JSONObject;
 
 public class Utility {
 
+
+    /*
+    to check whether response result from server is valid or no
+     */
     public static boolean checkValidResult(String result) {
 
         if (result != null) {
@@ -33,6 +40,10 @@ public class Utility {
         return true;
     }
 
+    /*
+    to check whether response result from server is valid or no
+    if yes will show toast to show the error message
+     */
     public static boolean checkValidResult(Context context, String result) {
 
         if (result != null) {
@@ -73,24 +84,22 @@ public class Utility {
         return bitmap;
     }
 
-    public int getPSILevelColor(Context context, int value) {
-        int color = R.color.good;
-        if (value >= 0 && value <= 50) {
-            color = R.color.good;
-        } else if (value > 50 && value <= 100) {
-            color = R.color.moderate;
-        } else if (value > 100 && value <= 200) {
-            color = R.color.un_healthy;
-        } else if (value > 200 && value <= 300) {
-            color = R.color.very_un_healthy;
-        } else if (value > 300) {
-            color = R.color.hazardous;
-        }
-
-        return color;
-    }
-
+    // to get file name of status icon
     public static String getImageFileName(String status) {
         return status.substring(status.indexOf(Constant.COLON) + 1).trim().replace(Constant.SPACE, Constant.UNDERSCORE).toLowerCase();
+    }
+
+    public static Animation expandAnimation() {
+        RotateAnimation anim = new RotateAnimation(180f, 0f, 15f, 15f);
+        anim.setInterpolator(new LinearInterpolator());
+        anim.setDuration(Constant.ANIMATION_DURATION);
+        return anim;
+    }
+
+    public static Animation collapseAnimation() {
+        RotateAnimation anim = new RotateAnimation(-180f, 0f, 15f, 15f);
+        anim.setInterpolator(new LinearInterpolator());
+        anim.setDuration(Constant.ANIMATION_DURATION);
+        return anim;
     }
 }
