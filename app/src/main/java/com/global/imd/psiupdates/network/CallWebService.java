@@ -10,6 +10,12 @@ import com.global.imd.psiupdates.R;
  * Created by Caca Rusmana on 18/09/2017.
  */
 
+
+/*
+asyncTask method to handle the process of request to rest api services
+it will separate each process pre, on and post process of the request
+ */
+
 public class CallWebService extends AsyncTask<Object, String, String> {
 
     private Context context;
@@ -25,9 +31,8 @@ public class CallWebService extends AsyncTask<Object, String, String> {
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, null, context.getString(R.string.label_retrieving_data), true, false);
         if (showDialog)
-            dialog.show();
+            dialog = ProgressDialog.show(context, null, context.getString(R.string.label_retrieving_data), true, false);
     }
 
     @Override
@@ -47,6 +52,6 @@ public class CallWebService extends AsyncTask<Object, String, String> {
     @Override
     protected void onPostExecute(String result) {
         callback.onTaskComplete(result);
-        if (dialog.isShowing()) dialog.dismiss();
+        if (dialog != null && dialog.isShowing()) dialog.dismiss();
     }
 }
