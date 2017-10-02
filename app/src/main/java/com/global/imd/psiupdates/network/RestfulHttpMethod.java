@@ -19,19 +19,24 @@ public class RestfulHttpMethod {
     just a simple communication using GET request
      */
     public static String connect(String url) throws Exception {
-        String result;
+        String result = null;
 
-        URL urlObj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
-        con.setRequestMethod(Constant.METHOD_GET);
-        con.setConnectTimeout(Constant.TIMEOUT_CONN);
-        con.addRequestProperty(Constant.API_KEY_NAME, Constant.API_KEY);
+        try {
+            URL urlObj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
+            con.setRequestMethod(Constant.METHOD_GET);
+            con.setConnectTimeout(Constant.TIMEOUT_CONN);
+            con.addRequestProperty(Constant.API_KEY_NAME, Constant.API_KEY);
 
-        if (con.getResponseCode() == Constant.RESPONSE_SUCCEED) {
-            result = readStream(con.getInputStream());
-        } else {
-            result = readStream(con.getErrorStream());
+            if (con.getResponseCode() == Constant.RESPONSE_SUCCEED) {
+                result = readStream(con.getInputStream());
+            } else {
+                result = readStream(con.getErrorStream());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         System.out.println("##### RESULT : " + result);
 
         return result;
