@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.global.imd.psiupdates.R;
+import com.global.imd.psiupdates.adapter.HomeViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,6 @@ public class HomeActivity extends AppCompatActivity {
     ViewPager viewPager;
 
     private List<Fragment> mFragmentList = new ArrayList<>();
-    private List<String> mFragmentTitleList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,9 +53,15 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setupViewPager() {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PSI24MapFragment(), getString(R.string.label_psi24_title));
-        adapter.addFragment(new PM25MapFragment(), getString(R.string.label_pm25_title));
+        mFragmentList = new ArrayList<>();
+        List<String> mFragmentTitleList = new ArrayList<>();
+
+        mFragmentList.add(new PSI24MapFragment());
+        mFragmentTitleList.add(getString(R.string.label_psi24_title));
+        mFragmentList.add(new PM25MapFragment());
+        mFragmentTitleList.add(getString(R.string.label_pm25_title));
+
+        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager(), mFragmentList, mFragmentTitleList);
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
@@ -90,33 +94,4 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-
-    private class ViewPagerAdapter extends FragmentPagerAdapter {
-
-
-        private ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        private void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-
-    }
 }

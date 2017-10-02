@@ -70,7 +70,7 @@ public class BaseMapFragment extends Fragment implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
     }
 
-    // it will notify that google map already to be used
+    // it will notify google map if map already to be used
     @Override
     public void onMapReady(GoogleMap googleMap) {
         // disable all gesture on map
@@ -87,6 +87,7 @@ public class BaseMapFragment extends Fragment implements OnMapReadyCallback {
 
     /*
     initialize the summary level description of psi or pm2.5
+    it created dynamically as the array given to this method
      */
     protected void initSummaryLevel(String[] titles, String[] descriptions) {
 
