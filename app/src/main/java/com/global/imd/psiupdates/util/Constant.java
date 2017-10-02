@@ -14,9 +14,8 @@ public class Constant {
     public static final String API_KEY = "uMebr8EaejmtS5W8TR5X5NgBW19A0o9P";
     public static final String API_KEY_NAME = "api-key";
     public static final String METHOD_GET = "GET";
-    public static final Integer TIMEOUT_CONN = 60000;
+    public static final Integer TIMEOUT_CONN = 90000;
     public static final Integer RESPONSE_SUCCEED = 200;
-    public static final String REST_RESULT = "result";
 
     // date time and localization
     public static final String SG_ZONE_ID = "Singapore";
